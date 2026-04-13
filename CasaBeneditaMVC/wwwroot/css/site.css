@@ -1,0 +1,171 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #ffffff;
+}
+
+/* ===== HEADER ===== */
+.header {
+    background-color: #9A3E17;
+    padding: 14px 0;
+}
+
+    .header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+/* ===== LOGO ===== */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    height: 78px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ===== MENU ===== */
+.navmenu ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navmenu a {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+    .navmenu a:hover {
+        color: #f4d08d;
+    }
+
+/* ===== BOTÃO ENTRAR ===== */
+.btn-getstarted {
+    background: #2f2f2f;
+    color: #fff !important;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-style: italic;
+}
+
+    .btn-getstarted:hover {
+        background: #000;
+    }
+
+/* ===== HOME PRINCIPAL ===== */
+.hero-home {
+    width: 100%;
+    height: 85vh;
+    /* COR PROVISÓRIA (enquanto não tem imagem) */
+    background: linear-gradient(rgba(35,18,8,0.35), rgba(35,18,8,0.35)), #5b2d11;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 8%;
+}
+
+/* QUANDO TIVER A IMAGEM, TROCAR POR ISSO:
+
+.hero-home {
+  background: linear-gradient(rgba(35,18,8,0.35), rgba(35,18,8,0.35)),
+  url('/images/banner.jpg') center/cover no-repeat;
+}
+
+*/
+
+.hero-content {
+    max-width: 600px;
+    color: #fff;
+}
+
+/* TEXTO */
+.hero-subtitle {
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #f3f3f3;
+}
+
+.hero-title {
+    font-size: 130px;
+    font-weight: 900;
+    color: #ddb65d;
+    line-height: 1;
+}
+
+.hero-line {
+    width: 100%;
+    height: 4px;
+    background: white;
+    margin: 20px 0;
+}
+
+.hero-description {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* BOTÃO RESERVA */
+.hero-button {
+    display: inline-block;
+    background: #ddb65d;
+    color: #2d1d0f !important;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .hero-button:hover {
+        background: #cfa24b;
+    }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+
+    .hero-home {
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero-title {
+        font-size: 70px;
+    }
+
+    .hero-subtitle {
+        font-size: 35px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .navmenu ul {
+        flex-direction: column;
+    }
+}

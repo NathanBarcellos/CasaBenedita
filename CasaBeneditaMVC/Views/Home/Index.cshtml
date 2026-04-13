@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Casa Benedita";
+}
+
+<div class="Banner">
+    <a href="/mesas.html">
+        <img src="~/assets/img/reserva-atualizado.jpg" class="img-fluid hero-image" alt="Imagem de destaque do restaurante">
+    </a>
+</div>
+
+<section id="about" class="about section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Sobre Nós</h2>
+        <p><span>Saiba mais</span> <span class="description-title">Sobre a Nossa História</span></p>
+    </div>
+
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+                <img src="~/assets/img/COZINHA.png" class="img-fluid mb-4" alt="Interior do restaurante">
+            </div>
+
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+                <div class="content ps-0 ps-lg-5">
+                    <p class="fst-italic">
+                        Na Dona Benedita, acreditamos que a comida une as pessoas. Nossa jornada começou com receitas de família passadas por gerações.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Ingredientes frescos colhidos no dia.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Ambiente acolhedor e familiar para seus amigos.</span></li>
+                        <li><i class="bi bi-check-circle-fill"></i> <span>Pratos feitos na hora com temperos naturais.</span></li>
+                    </ul>
+                    <p>
+                        Trabalhamos duro para garantir que cada garfada seja uma lembrança afetiva. Do nosso fogão para a sua mesa, sempre com o carinho que você merece.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="book-a-table" class="book-a-table section">
+    <div class="container section-title">
+        <h2>Reservar Mesa</h2>
+        <p><span>Garanta seu</span> <span class="description-title">Lugar Conosco</span></p>
+    </div>
+
+    <div class="container">
+        <form class="php-email-form">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Seu E-mail" required>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Seu Telefone" required>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <input type="date" name="date" class="form-control" id="date" required>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <input type="number" class="form-control" name="people" id="people" placeholder="Nº de pessoas" required>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <textarea id="message" class="form-control" name="message" rows="5" placeholder="Mensagem / Observação"></textarea>
+            </div>
+
+            <div class="text-center mt-3">
+                <div class="loading" style="display:none;">Carregando...</div>
+
+                <div class="sent-message" style="display:none;">
+                    Seu pedido de reserva foi enviado. Ligaremos em breve para confirmar.
+                </div>
+
+                <button type="submit">Reservar Mesa</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.querySelector('.php-email-form')?.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const loading = document.querySelector('.loading');
+            const sentMessage = document.querySelector('.sent-message');
+
+            if (loading) loading.style.display = 'block';
+
+            setTimeout(() => {
+                if (loading) loading.style.display = 'none';
+                if (sentMessage) sentMessage.style.display = 'block';
+
+                window.location.href = "/mesas.html";
+            }, 1500);
+        });
+    </script>
+}

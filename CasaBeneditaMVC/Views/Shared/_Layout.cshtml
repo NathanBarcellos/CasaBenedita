@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa Benedita</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <header class="header d-flex align-items-center sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center text-decoration-none">
+                <div class="logo-container">
+                    <img src="~/assets/img/logo.webp" alt="Logo Casa Benedita" class="logo-icon">
+                    <h1 class="logo-text">CASA BENEDITA</h1>
+                </div>
+            </a>
+
+            <nav class="navmenu">
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">INÍCIO</a></li>
+                    <li><a asp-controller="Produto" asp-action="Index">CARDÁPIO</a></li>
+                    <li><a href="/mesas.html">RESERVAS</a></li>
+                </ul>
+            </nav>
+
+            <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">
+                <span class="btn-getstarted">ENTRAR</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer-pro text-center p-3">
+        <p>© Casa Benedita</p>
+    </footer>
+
+    <div class="modal fade" id="registerModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Criar Conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form asp-controller="Conta" asp-action="Cadastrar" method="post">
+                        <input type="text" name="Nome" class="form-control mb-2" placeholder="Nome completo" required>
+                        <input type="email" name="Email" class="form-control mb-2" placeholder="E-mail" required>
+                        <input type="password" name="Senha" class="form-control mb-2" placeholder="Senha" required>
+
+                        <button type="submit" class="btn w-100" style="background:#cf631a;color:white">
+                            CADASTRAR
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
