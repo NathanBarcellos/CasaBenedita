@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa Benedita</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container position-relative d-flex align-items-center justify-content-between">
+
+            <a href="Casa.Benedita.html" class="logo d-flex align-items-center me-auto me-xl-0">
+                <div class="logo-container">
+                    <img src="~/Images/imagem.png" alt="Logo Casa Benedita" class="logo-icon">
+                    <h1 class="logo-text">CASA BENEDITA</h1>
+                    <span>.</span>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#header" class="active">INÍCIO</a></li>
+                    <li><a href="MenuCardapio/MenuCardapio.html">CARDÁPIO</a></li>
+                    <li><a href="#Email">RESERVE SUA MESA</a></li>
+
+                </ul>
+
+            </nav>
+
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
+
+
+            <a href="#" class="me-3 login-link" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <i class="btn-getstarted">ENTRAR</i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="footer-pro">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <p>
+                    <strong>Localização:</strong><br>
+                    Rua Barão de Capanema, 2900<br>
+                    Jardins - São Paulo | SP
+                </p>
+
+                <p>
+                    <strong>Reservas:</strong><br>
+                    21 2493-2021 | 21 2494-7418
+                </p>
+
+                <p>
+                    <strong>E-mail:</strong><br>
+                    CasaBenedita@gmail.com.br
+                </p>
+
+                <div class="social">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+
+
+            <div class="footer-col">
+                <h3>Como Chegar</h3>
+                <iframe src="https://www.google.com/maps?q=Rua+Barão+de+Capanema,+São+Paulo&output=embed">
+                </iframe>
+            </div>
+            <div class="footer-col">
+                <h3>Funcionamento</h3>
+                <ul>
+                    <li><span>Segunda</span> 11:30h às 23:45h</li>
+                    <li><span>Terça</span> 11:30h às 23:45h</li>
+                    <li><span>Quarta</span> 11:30h às 23:45h</li>
+                    <li><span>Quinta</span> 11:30h às 23:45h</li>
+                    <li><span>Sexta</span> 11:30h às 23:45h</li>
+                    <li><span>Sábado</span> 11:30h às 01:00h</li>
+                    <li><span>Domingo</span> 11:30h às 23:45h</li>
+                </ul>
+            </div>
+
+
+            <div class="footer-copy">
+                <p>© Copyright <strong>Dona Benedita</strong> Todos os Direitos Reservados</p>
+                <p>Desenvolvido por AAA</p>
+            </div>
+
+    </footer>
+</body>
+</html>
