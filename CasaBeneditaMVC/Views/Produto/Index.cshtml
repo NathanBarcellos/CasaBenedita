@@ -12,19 +12,25 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
+                <th>Imagem</th>
                 <th>Nome</th>
                 <th>Descrição</th>
                 <th>Preço</th>
                 <th>Disponível</th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var produto in Model)
             {
                 <tr>
+                    <td>
+                        <img src="/Images/@produto.ImagemUrl"
+                             style="width:80px; height:80px; object-fit:cover;" />
+                    </td>
                     <td>@produto.Nome</td>
                     <td>@produto.Descricao</td>
                     <td>R$ @produto.Preco.ToString("N2")</td>

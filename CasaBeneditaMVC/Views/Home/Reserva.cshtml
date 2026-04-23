@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reserva de Mesas - Casa Benedita</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">CASA BENEDITA</div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <h1>Selecione sua Mesa</h1>
+        <p>Escolha um horário e sua mesa.</p>
+
+        <div class="horario">
+            <label><strong>Horário:</strong></label>
+            <input type="time" id="horario">
+        </div>
+
+        <div class="mesa-grid">
+
+            <!-- MESA 1 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">01</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+            <!-- MESA 2 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">02</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+            <!-- MESA 3 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">03</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+            <!-- MESA 4 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">04</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+            <!-- MESA 5 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">05</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+            <!-- MESA 6 -->
+            <div class="mesa" onclick="selecionarMesa(this)">
+                <div class="cadeira cadeira-top"></div>
+                <div class="cadeira cadeira-left"></div>
+
+                <div class="tampo">06</div>
+
+                <div class="cadeira cadeira-right"></div>
+                <div class="cadeira cadeira-bottom"></div>
+            </div>
+
+        </div>
+
+        <div class="legenda">
+            <span><span class="cor disp"></span>Disponível</span>
+            <span><span class="cor sel"></span>Selecionada</span>
+        </div>
+
+        <button class="btn-reservar" onclick="confirmarReserva()">
+            Confirmar Reserva
+        </button>
+
+    </main>
+
+    <script>
+
+        function selecionarMesa(mesa){
+
+        document.querySelectorAll('.mesa')
+        .forEach(m=>m.classList.remove('selecionada'));
+
+        mesa.classList.add('selecionada');
+
+        }
+
+        function confirmarReserva(){
+
+        const horario=document.getElementById("horario").value
+        const mesa=document.querySelector(".mesa.selecionada")
+
+        if(!horario){
+        alert("Escolha um horário")
+        return
+        }
+
+        if(!mesa){
+        alert("Selecione uma mesa")
+        return
+        }
+
+        alert("Reserva confirmada!")
+
+        }
+
+    </script>
+
+</body>
+</html>

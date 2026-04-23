@@ -1,6 +1,6 @@
 ﻿using CasaBeneditaMVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace CasaBeneditaMVC.Controllers
 {
@@ -15,7 +15,10 @@ namespace CasaBeneditaMVC.Controllers
 
         public IActionResult Index()
         {
-            var produtos = _context.Produtos.ToList();
+            var produtos = _context.Produtos
+                .Include(p => p.Categoria)
+                .ToList();
+
             return View(produtos);
         }
     }
