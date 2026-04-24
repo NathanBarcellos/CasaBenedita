@@ -11,6 +11,6 @@ namespace CasaBeneditaMVC.Models
         [StringLength(50)]
         public string Nome { get; set; }
 
-        public List<Produto> Produtos { get; set; }
+        public List<Produto> Produtos { get; set; } = new List<Produto>();
     }
 }

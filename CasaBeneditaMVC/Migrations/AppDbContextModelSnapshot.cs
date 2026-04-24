@@ -189,7 +189,7 @@ namespace CasaBeneditaMVC.Migrations
                             Descricao = "Costela suculenta",
                             Disponivel = true,
                             ImagemUrl = "Pratos/Costela.png",
-                            Nome = "Costela da Casa ao Molho Barbecue",
+                            Nome = "Costela da Casa",
                             Preco = 61.90m
                         },
                         new
@@ -199,7 +199,7 @@ namespace CasaBeneditaMVC.Migrations
                             Descricao = "Filé com molho especial",
                             Disponivel = true,
                             ImagemUrl = "Pratos/FileMignon.png",
-                            Nome = "Filé Mignon ao Molho da Vovó",
+                            Nome = "Filé Mignon",
                             Preco = 69.90m
                         },
                         new
@@ -209,7 +209,7 @@ namespace CasaBeneditaMVC.Migrations
                             Descricao = "Carne na brasa",
                             Disponivel = true,
                             ImagemUrl = "Pratos/contra.png",
-                            Nome = "Contra Filé Especial na Brasa",
+                            Nome = "Contra Filé",
                             Preco = 49.90m
                         },
                         new
@@ -219,108 +219,8 @@ namespace CasaBeneditaMVC.Migrations
                             Descricao = "Lombo assado",
                             Disponivel = true,
                             ImagemUrl = "Pratos/Lombo.png",
-                            Nome = "Lombo Suíno Assado da Fazenda",
+                            Nome = "Lombo Suíno",
                             Preco = 44.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 11,
-                            CategoriaId = 4,
-                            Descricao = "Sobremesa da casa",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Pudim.png",
-                            Nome = "Pudim Cremoso da Dona Benedita",
-                            Preco = 12.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 12,
-                            CategoriaId = 4,
-                            Descricao = "Brownie quente",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Brownie.png",
-                            Nome = "Brownie Quentinho da Casa",
-                            Preco = 18.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 13,
-                            CategoriaId = 4,
-                            Descricao = "Mousse cremoso",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Mousse.jpg",
-                            Nome = "Mousse de Chocolate Especial",
-                            Preco = 14.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 14,
-                            CategoriaId = 4,
-                            Descricao = "Sobremesa com frutas",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/DoceTentacao.png",
-                            Nome = "Doce Tentação de Frutas Vermelhas",
-                            Preco = 19.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 15,
-                            CategoriaId = 4,
-                            Descricao = "Chocolate especial",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/DeliciaChocolate.png",
-                            Nome = "Delícia de Chocolate com Coração Quente",
-                            Preco = 22.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 16,
-                            CategoriaId = 3,
-                            Descricao = "Lata 350ml",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/refri_latas.jpg",
-                            Nome = "Refrigerante Gelado",
-                            Preco = 6.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 17,
-                            CategoriaId = 3,
-                            Descricao = "Suco natural",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Suco.png",
-                            Nome = "Suco Natural da Casa",
-                            Preco = 9.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 18,
-                            CategoriaId = 3,
-                            Descricao = "Água sem gás",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Agua.png",
-                            Nome = "Água Mineral",
-                            Preco = 4.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 19,
-                            CategoriaId = 3,
-                            Descricao = "Cerveja gelada",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Cervejas.png",
-                            Nome = "Cerveja Long Neck",
-                            Preco = 8.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 20,
-                            CategoriaId = 3,
-                            Descricao = "Cerveja especial",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Cervejas.png",
-                            Nome = "Cerveja Artesanal da Casa",
-                            Preco = 14.00m
                         });
                 });
 
@@ -358,9 +258,14 @@ namespace CasaBeneditaMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("ReservaId");
 
                     b.HasIndex("MesaId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Reservas");
                 });
@@ -407,17 +312,28 @@ namespace CasaBeneditaMVC.Migrations
             modelBuilder.Entity("CasaBeneditaMVC.Models.Reserva", b =>
                 {
                     b.HasOne("CasaBeneditaMVC.Models.Mesa", "Mesa")
-                        .WithMany()
+                        .WithMany("Reservas")
                         .HasForeignKey("MesaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CasaBeneditaMVC.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+
                     b.Navigation("Mesa");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("CasaBeneditaMVC.Models.Categoria", b =>
                 {
                     b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("CasaBeneditaMVC.Models.Mesa", b =>
+                {
+                    b.Navigation("Reservas");
                 });
 #pragma warning restore 612, 618
         }

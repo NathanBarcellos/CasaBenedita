@@ -1,42 +1,38 @@
 ﻿@model IEnumerable<CasaBeneditaMVC.Models.Produto>
 
 @{
-    ViewData["Title"] = "Produtos";
+    ViewData["Title"] = "Cardápio";
 }
 
-<h1>Produtos</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Cardápio Casa Benedita</h1>
 
-@if (!Model.Any())
-{
-    <p>Nenhum produto cadastrado no momento.</p>
-}
-else
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Imagem</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Disponível</th>
-            </tr>
-        </thead>
+    @foreach (var categoria in Model.Select(p => p.Categoria).Distinct())
+    {
+        <h3 class="mt-5">@categoria.Nome</h3>
 
-        <tbody>
-            @foreach (var produto in Model)
+        <div class="row">
+            @foreach (var produto in Model.Where(p => p.CategoriaId == categoria.CategoriaId))
             {
-                <tr>
-                    <td>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+
                         <img src="/Images/@produto.ImagemUrl"
-                             style="width:80px; height:80px; object-fit:cover;" />
-                    </td>
-                    <td>@produto.Nome</td>
-                    <td>@produto.Descricao</td>
-                    <td>R$ @produto.Preco.ToString("N2")</td>
-                    <td>@(produto.Disponivel ? "Sim" : "Não")</td>
-                </tr>
+                             class="card-img-top"
+                             style="height:220px; object-fit:cover;" />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@produto.Nome</h5>
+                            <p class="card-text">@produto.Descricao</p>
+
+                            <h5 class="text-success fw-bold">
+                                R$ @produto.Preco.ToString("N2")
+                            </h5>
+                        </div>
+
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-}
+        </div>
+    }
+</div>

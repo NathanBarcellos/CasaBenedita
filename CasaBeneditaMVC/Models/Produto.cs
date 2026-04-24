@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CasaBeneditaMVC.Models
 {
@@ -21,10 +20,8 @@ namespace CasaBeneditaMVC.Models
 
         public bool Disponivel { get; set; } = true;
 
-        // Chave estrangeira
         public int CategoriaId { get; set; }
 
-        // Relacionamento
         public Categoria Categoria { get; set; }
     }
 }
