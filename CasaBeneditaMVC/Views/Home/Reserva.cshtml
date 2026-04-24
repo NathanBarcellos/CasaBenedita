@@ -1,13 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["Title"] = "Reserva de Mesas";
+}
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Reserva de Mesas - Casa Benedita</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -20,125 +23,97 @@
         </nav>
     </header>
 
-    <main class="container">
+    <form method="post" asp-controller="Reserva" asp-action="Criar">
 
-        <h1>Selecione sua Mesa</h1>
-        <p>Escolha um horário e sua mesa.</p>
+        <main class="container">
 
-        <div class="horario">
-            <label><strong>Horário:</strong></label>
-            <input type="time" id="horario">
-        </div>
+            <!-- 🔥 MENSAGENS -->
+            @if (TempData["Sucesso"] != null)
+            {
+                <div style="background-color:#28a745; color:white; padding:12px; margin-bottom:15px; border-radius:6px; font-weight:bold;">
+                    @TempData["Sucesso"]
+                </div>
+            }
 
-        <div class="mesa-grid">
+            @if (TempData["Erro"] != null)
+            {
+                <div style="background-color:#dc3545; color:white; padding:12px; margin-bottom:15px; border-radius:6px; font-weight:bold;">
+                    @TempData["Erro"]
+                </div>
+            }
 
-            <!-- MESA 1 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
+            <h1>Selecione sua Mesa</h1>
+            <p>Escolha um horário e sua mesa.</p>
 
-                <div class="tampo">01</div>
-
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
+            <div class="horario">
+                <label><strong>Horário:</strong></label>
+                <input type="time" id="horario">
             </div>
 
-            <!-- MESA 2 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
+            <div class="mesa-grid">
 
-                <div class="tampo">02</div>
+                @for (int i = 1; i <= 6; i++)
+                {
+                    <div class="mesa" onclick="selecionarMesa(this)">
+                        <div class="cadeira cadeira-top"></div>
+                        <div class="cadeira cadeira-left"></div>
 
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
+                        <div class="tampo">@i.ToString("00")</div>
+
+                        <div class="cadeira cadeira-right"></div>
+                        <div class="cadeira cadeira-bottom"></div>
+                    </div>
+                }
+
             </div>
 
-            <!-- MESA 3 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
-
-                <div class="tampo">03</div>
-
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
+            <div class="legenda">
+                <span><span class="cor disp"></span>Disponível</span>
+                <span><span class="cor sel"></span>Selecionada</span>
             </div>
 
-            <!-- MESA 4 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
+            <!-- CAMPOS OCULTOS -->
+            <input type="hidden" name="MesaId" id="mesaId" />
+            <input type="hidden" name="HorarioReserva" id="horarioReserva" />
 
-                <div class="tampo">04</div>
+            <button type="submit" class="btn-reservar" onclick="prepararReserva(event)">
+                Confirmar Reserva
+            </button>
 
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
-            </div>
+        </main>
 
-            <!-- MESA 5 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
-
-                <div class="tampo">05</div>
-
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
-            </div>
-
-            <!-- MESA 6 -->
-            <div class="mesa" onclick="selecionarMesa(this)">
-                <div class="cadeira cadeira-top"></div>
-                <div class="cadeira cadeira-left"></div>
-
-                <div class="tampo">06</div>
-
-                <div class="cadeira cadeira-right"></div>
-                <div class="cadeira cadeira-bottom"></div>
-            </div>
-
-        </div>
-
-        <div class="legenda">
-            <span><span class="cor disp"></span>Disponível</span>
-            <span><span class="cor sel"></span>Selecionada</span>
-        </div>
-
-        <button class="btn-reservar" onclick="confirmarReserva()">
-            Confirmar Reserva
-        </button>
-
-    </main>
+    </form>
 
     <script>
 
         function selecionarMesa(mesa){
+            document.querySelectorAll('.mesa')
+                .forEach(m => m.classList.remove('selecionada'));
 
-        document.querySelectorAll('.mesa')
-        .forEach(m=>m.classList.remove('selecionada'));
-
-        mesa.classList.add('selecionada');
-
+            mesa.classList.add('selecionada');
         }
 
-        function confirmarReserva(){
+        function prepararReserva(event){
 
-        const horario=document.getElementById("horario").value
-        const mesa=document.querySelector(".mesa.selecionada")
+            const horario = document.getElementById("horario").value;
+            const mesa = document.querySelector(".mesa.selecionada");
 
-        if(!horario){
-        alert("Escolha um horário")
-        return
-        }
+            if(!horario){
+                alert("Escolha um horário");
+                event.preventDefault();
+                return;
+            }
 
-        if(!mesa){
-        alert("Selecione uma mesa")
-        return
-        }
+            if(!mesa){
+                alert("Selecione uma mesa");
+                event.preventDefault();
+                return;
+            }
 
-        alert("Reserva confirmada!")
+            const numeroMesa = mesa.querySelector(".tampo").innerText;
 
+            document.getElementById("mesaId").value = numeroMesa;
+            document.getElementById("horarioReserva").value = horario;
         }
 
     </script>

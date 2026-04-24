@@ -18,6 +18,7 @@ namespace CasaBeneditaMVC.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            // 🔵 CATEGORIAS
             modelBuilder.Entity<Categoria>().HasData(
                 new Categoria { CategoriaId = 1, Nome = "Entradas" },
                 new Categoria { CategoriaId = 2, Nome = "Pratos Principais" },
@@ -25,6 +26,7 @@ namespace CasaBeneditaMVC.Models
                 new Categoria { CategoriaId = 4, Nome = "Sobremesas" }
             );
 
+            // 🔵 PRODUTOS
             modelBuilder.Entity<Produto>().HasData(
 
                 // ENTRADAS
@@ -40,6 +42,18 @@ namespace CasaBeneditaMVC.Models
                 new Produto { ProdutoId = 8, Nome = "Filé Mignon", Descricao = "Filé com molho especial", Preco = 69.90m, ImagemUrl = "Pratos/FileMignon.png", Disponivel = true, CategoriaId = 2 },
                 new Produto { ProdutoId = 9, Nome = "Contra Filé", Descricao = "Carne na brasa", Preco = 49.90m, ImagemUrl = "Pratos/contra.png", Disponivel = true, CategoriaId = 2 },
                 new Produto { ProdutoId = 10, Nome = "Lombo Suíno", Descricao = "Lombo assado", Preco = 44.90m, ImagemUrl = "Pratos/Lombo.png", Disponivel = true, CategoriaId = 2 }
+            );
+
+            // 🔵 MESAS (ESSENCIAL)
+            modelBuilder.Entity<Mesa>().HasData(
+
+                new Mesa { MesaId = 1, NumeroMesa = 1, Capacidade = 4, Disponivel = true },
+                new Mesa { MesaId = 2, NumeroMesa = 2, Capacidade = 4, Disponivel = true },
+                new Mesa { MesaId = 3, NumeroMesa = 3, Capacidade = 4, Disponivel = true },
+                new Mesa { MesaId = 4, NumeroMesa = 4, Capacidade = 4, Disponivel = true },
+                new Mesa { MesaId = 5, NumeroMesa = 5, Capacidade = 4, Disponivel = true },
+                new Mesa { MesaId = 6, NumeroMesa = 6, Capacidade = 4, Disponivel = true }
+
             );
         }
     }
