@@ -45,11 +45,26 @@
             <h1>Selecione sua Mesa</h1>
             <p>Escolha um horário e sua mesa.</p>
 
+            <!-- 🔵 DADOS DO CLIENTE -->
+            <div style="margin-bottom:15px;">
+                <input type="text" name="NomeCliente" placeholder="Seu nome" required class="form-control" />
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <input type="email" name="EmailCliente" placeholder="Seu email" required class="form-control" />
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <input type="text" name="TelefoneCliente" placeholder="Seu telefone" required class="form-control" />
+            </div>
+
+            <!-- 🔵 HORÁRIO -->
             <div class="horario">
                 <label><strong>Horário:</strong></label>
                 <input type="time" id="horario">
             </div>
 
+            <!-- 🔵 MESAS -->
             <div class="mesa-grid">
 
                 @for (int i = 1; i <= 6; i++)
