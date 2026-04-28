@@ -1,0 +1,285 @@
+﻿@{
+    ViewData["Title"] = "Cardápio";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cardapio.css" />
+}
+
+<header class="menu-header">
+    <div class="container">
+        <a asp-controller="Home" asp-action="Index" class="back-btn">
+            ← Voltar
+        </a>
+
+        <div class="logo">
+            <img src="~/Images/logo.webp" width="80" />
+            <h1>Casa Benedita</h1>
+        </div>
+    </div>
+</header>
+
+<!-- PRATOS -->
+<section class="menu-section">
+    <div class="container">
+        <h2>🥩 PRATOS PRINCIPAIS</h2>
+
+        <div class="dishes-grid">
+
+            <div class="dish-card">
+                <img src="~/Images/Pratos/picanha.png" />
+                <div class="dish-info">
+                    <h3>Picanha da Dona Benedita</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 64,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Pratos/Costela.png" />
+                <div class="dish-info">
+                    <h3>Costela ao Molho Barbecue</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 61,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Pratos/FileMignon.png" />
+                <div class="dish-info">
+                    <h3>Filé Mignon ao Molho da Vovó</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 69,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Pratos/contra.png" />
+                <div class="dish-info">
+                    <h3>Contra Filé na Brasa</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 49,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Pratos/Lombo.png" />
+                <div class="dish-info">
+                    <h3>Lombo Suíno da Fazenda</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 44,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ENTRADAS -->
+<section class="menu-section">
+    <div class="container">
+        <h2>🍽️ ENTRADAS</h2>
+
+        <div class="dishes-grid">
+
+            <div class="dish-card">
+                <img src="~/Images/Entradas/Bruschetta.png" />
+                <div class="dish-info">
+                    <h3>Bruschetta Especial</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 24,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Entradas/Carpaccio.png" />
+                <div class="dish-info">
+                    <h3>Carpaccio da Casa</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 29,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Entradas/Batata.png" />
+                <div class="dish-info">
+                    <h3>Batata Rústica</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 19,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Entradas/Bolinho.png" />
+                <div class="dish-info">
+                    <h3>Bolinho Dourado</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 22,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Entradas/Dadinhos.png" />
+                <div class="dish-info">
+                    <h3>Dadinhos Crocantes</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 21,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SOBREMESAS -->
+<section class="menu-section">
+    <div class="container">
+        <h2>🍰 SOBREMESAS</h2>
+
+        <div class="dishes-grid">
+
+            <div class="dish-card">
+                <img src="~/Images/Sobremesas/Pudim.png" />
+                <div class="dish-info">
+                    <h3>Pudim</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 12,00</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Sobremesas/Brownie.png" />
+                <div class="dish-info">
+                    <h3>Brownie</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 18,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Sobremesas/Mousse.png" />
+                <div class="dish-info">
+                    <h3>Mousse de Chocolate</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 14,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Sobremesas/DoceTentacao.png" />
+                <div class="dish-info">
+                    <h3>Doce Tentação</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 19,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Sobremesas/DeliciaChocolate.png" />
+                <div class="dish-info">
+                    <h3>Delícia Chocolate</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 22,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- BEBIDAS -->
+<section class="menu-section">
+    <div class="container">
+        <h2>🍹 BEBIDAS</h2>
+
+        <div class="dishes-grid">
+
+            <div class="dish-card">
+                <img src="~/Images/Bebidas/refri_latas.jpg" />
+                <div class="dish-info">
+                    <h3>Refrigerante</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 6,00</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Bebidas/Suco.png" />
+                <div class="dish-info">
+                    <h3>Suco Natural</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 9,90</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Bebidas/Cervejas.png" />
+                <div class="dish-info">
+                    <h3>Cerveja Long Neck</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 14,00</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Bebidas/Agua.png" />
+                <div class="dish-info">
+                    <h3>Água Mineral</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 4,00</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <img src="~/Images/Bebidas/Cervejas.png" />
+                <div class="dish-info">
+                    <h3>Cerveja Artesanal</h3>
+                    <div class="preco-botao">
+                        <span class="price">R$ 14,00</span>
+                        <div class="botao">Comprar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

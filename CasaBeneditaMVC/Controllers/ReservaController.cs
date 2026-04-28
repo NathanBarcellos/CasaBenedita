@@ -12,6 +12,12 @@ namespace CasaBeneditaMVC.Controllers
             _context = context;
         }
 
+        // 👉 ESSA PARTE FALTAVA
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Criar(
             int MesaId,
@@ -24,20 +30,18 @@ namespace CasaBeneditaMVC.Controllers
 
             var horarioSelecionado = TimeSpan.Parse(HorarioReserva);
 
-            
             var reservasDoDia = _context.Reservas
                 .Where(r => r.MesaId == MesaId && r.DataReserva.Date == dataHoje)
                 .ToList();
 
-            
             bool mesaOcupada = reservasDoDia.Any(r =>
                 Math.Abs((TimeSpan.Parse(r.HorarioReserva) - horarioSelecionado).TotalMinutes) < 60
             );
 
             if (mesaOcupada)
             {
-                TempData["Erro"] = "Essa mesa já está reservada em um horário próximo. Escolha outro horário.";
-                return RedirectToAction("Reserva", "Home");
+                TempData["Erro"] = "Essa mesa já está reservada em um horário próximo.";
+                return RedirectToAction("Index");
             }
 
             var reserva = new Reserva
@@ -56,7 +60,7 @@ namespace CasaBeneditaMVC.Controllers
 
             TempData["Sucesso"] = "Reserva confirmada com sucesso!";
 
-            return RedirectToAction("Reserva", "Home");
+            return RedirectToAction("Index");
         }
     }
 }

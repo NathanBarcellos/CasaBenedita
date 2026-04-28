@@ -18,6 +18,11 @@ namespace CasaBeneditaMVC.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            // 🔴 CORREÇÃO DO PREÇO (IMPORTANTE)
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Preco)
+                .HasPrecision(10, 2);
+
             // 🔵 CATEGORIAS
             modelBuilder.Entity<Categoria>().HasData(
                 new Categoria { CategoriaId = 1, Nome = "Entradas" },
@@ -44,7 +49,7 @@ namespace CasaBeneditaMVC.Models
                 new Produto { ProdutoId = 10, Nome = "Lombo Suíno", Descricao = "Lombo assado", Preco = 44.90m, ImagemUrl = "Pratos/Lombo.png", Disponivel = true, CategoriaId = 2 }
             );
 
-            // 🔵 MESAS (ESSENCIAL)
+            // 🔵 MESAS
             modelBuilder.Entity<Mesa>().HasData(
 
                 new Mesa { MesaId = 1, NumeroMesa = 1, Capacidade = 4, Disponivel = true },

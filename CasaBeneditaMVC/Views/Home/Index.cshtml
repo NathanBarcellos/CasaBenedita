@@ -1,98 +1,131 @@
 ﻿@{
     ViewData["Title"] = "Casa Benedita";
+    Layout = "_Layout";
 }
 
-<div class="Banner">
-    <a href="#Email">
-        <img src="/Images/reserva-atualizado.jpg" class="img-fluid hero-image"
-             alt="Imagem de destaque do restaurante">
-    </a>
-</div>
+<header id="header" class="header-overlay d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
-<section id="about" class="about section">
-    <div class="container">
-        <div class="row gy-4">
-            <div class="col-lg-7">
-                <img src="/Images/COZINHA.png" class="img-fluid mb-4" alt="Interior do restaurante">
-            </div>
-            <div class="col-lg-5">
-                <div class="content ps-0 ps-lg-5">
-                    <p class="fst-italic">
-                        Na Dona Benedita, acreditamos que a comida une as pessoas. Nossa jornada começou com receitas de família
-                        passadas por gerações.
-                    </p>
-                    <ul>
-                        <li><i class="bi bi-check-circle-fill"></i> <span>Ingredientes frescos colhidos no dia.</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span>Ambiente acolhedor e familiar para seus amigos.</span></li>
-                        <li><i class="bi bi-check-circle-fill"></i> <span>Pratos feitos na hora com temperos naturais.</span></li>
-                    </ul>
-                    <p>
-                        Trabalhamos duro para garantir que cada garfada seja uma lembrança afetiva. Do nosso fogão para a sua
-                        mesa, sempre com o carinho que você merece.
-                    </p>
-                </div>
-            </div>
+        <!-- LOGO -->
+        <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
+            <img src="~/Images/logo.webp" alt="Logo" class="logo-icon">
+            <h1 class="logo-text">CASA BENEDITA</h1>
+        </a>
+
+        <!-- MENU -->
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">INÍCIO</a></li>
+                <li><a asp-controller="Cardapio" asp-action="Index">CARDÁPIO</a></li>
+                <li><a asp-controller="Reserva" asp-action="Index">RESERVAS</a></li>
+                <li class="d-lg-none">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">ENTRAR</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- BOTÃO ENTRAR -->
+        <div class="d-flex align-items-center gap-3">
+            <a href="#" class="btn-entrar d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#loginModal">
+                ENTRAR
+            </a>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </div>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-full">
+    <img src="~/Images/Fachada.png" alt="Banner" class="hero-bg">
+
+    <div class="hero-container">
+        <div class="hero-content">
+            <h2>Faça sua Reserva</h2>
+            <p>Garanta seu lugar com mais conforto.</p>
+
+            <a asp-controller="Reserva" asp-action="Index" class="btn-book">
+                RESERVE AGORA SUA MESA
+            </a>
         </div>
     </div>
 </section>
 
-<section id="menu" class="menu section">
-    <div class="container text-center">
-        <h2>Nosso Cardápio</h2>
-        <p>Veja nossos pratos na página de cardápio.</p>
-        <a href="/Produto" class="btn btn-success">Ver Cardápio</a>
-    </div>
-</section>
-
-<section id="book-a-table" class="book-a-table section">
-    <div class="container section-title">
-        <h2>Reservar Mesa</h2>
-        <p><span>Garanta seu</span> <span class="description-title">Lugar Conosco</span></p>
-    </div>
-
+<!-- SOBRE -->
+<section id="about" class="about section">
     <div class="container">
-        <form class="Formulario" id="Email">
-            <div class="row gy-4">
-                <div class="col-lg-4 col-md-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Seu Nome" required>
-                </div>
+        <div class="row gy-4">
 
-                <div class="col-lg-4 col-md-6">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Seu E-mail" required>
-                </div>
+            <div class="col-lg-7">
+                <img src="~/Images/COZINHA.png" class="img-fluid mb-4" alt="Interior do restaurante">
+            </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Seu Telefone" required>
-                </div>
+            <div class="col-lg-5">
+                <div class="content ps-0 ps-lg-5">
 
-                <div class="col-lg-4 col-md-6">
-                    <input type="number" class="form-control" name="people" id="people" placeholder="Nº de pessoas" required>
+                    <p class="fst-italic">
+                        Na Dona Benedita, acreditamos que a comida une as pessoas. Nossa jornada começou com receitas de família passadas por gerações.
+                    </p>
+
+                    <ul>
+                        <li><i class="bi bi-check-circle-fill"></i> Ingredientes frescos colhidos no dia.</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Ambiente acolhedor e familiar.</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Pratos feitos na hora com temperos naturais.</li>
+                    </ul>
+
+                    <p>
+                        Trabalhamos para garantir que cada garfada seja uma lembrança especial.
+                    </p>
+
                 </div>
             </div>
 
-            <div class="form-group mt-3">
-                <textarea id="message" class="form-control" name="message" rows="5"
-                          placeholder="Mensagem / Observação"></textarea>
-            </div>
-
-            <div class="text-center mt-3">
-                <a href="/Home/Reserva" class="btn btn-success">
-                    Reservar Mesa
-                </a>
-            </div>
-        </form>
+        </div>
     </div>
 </section>
 
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-</a>
+<!-- FOOTER ORIGINAL -->
+<footer class="footer-pro">
+    <div class="footer-container">
+        <div class="footer-col">
+            <p>
+                <strong>Localização:</strong><br>
+                Rua Barão de Capanema, 2900<br>
+                Jardins - São Paulo | SP
+            </p>
 
-<div id="preloader"></div>
+            <p>
+                <strong>Reservas:</strong><br>
+                21 2493-2021 | 21 2494-7418
+            </p>
 
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/vendor/aos/aos.js"></script>
-<script src="/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="/js/main.js"></script>
+            <p>
+                <strong>E-mail:</strong><br>
+                CasaBenedita@gmail.com.br
+            </p>
+
+            <div class="social">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>Como Chegar</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197502758151!2d-46.663189!3d-23.561349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzQwLjkiUyA0NsKwMzknNDcuNSJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr"></iframe>
+        </div>
+
+        <div class="footer-col">
+            <h3>Funcionamento</h3>
+            <ul>
+                <li><span>Segunda</span> 11:30h às 23:45h</li>
+                <li><span>Terça</span> 11:30h às 23:45h</li>
+                <li><span>Quarta</span> 11:30h às 23:45h</li>
+                <li><span>Quinta</span> 11:30h às 23:45h</li>
+                <li><span>Sexta</span> 11:30h às 23:45h</li>
+                <li><span>Sábado</span> 11:30h às 01:00h</li>
+                <li><span>Domingo</span> 11:30h às 23:45h</li>
+            </ul>
+        </div>
+    </div>
+</footer>

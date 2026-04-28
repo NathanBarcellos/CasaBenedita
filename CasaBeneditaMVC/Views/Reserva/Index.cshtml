@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Reserva";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="reserva-wrapper">
+    <div class="container">
+        <div class="card">
+
+            <header>
+                <h1>CASA BENEDITA</h1>
+                <p class="subtitle">Faça sua reserva!</p>
+            </header>
+
+            <form asp-controller="Reserva" asp-action="Criar" method="post">
+
+                <select name="Estado" id="estado" class="custom-select">
+                    <option value="">Estado*</option>
+                    <option value="SP">São Paulo</option>
+                </select>
+
+                <select name="Cidade" id="cidade" class="custom-select">
+                    <option value="">Cidade*</option>
+                    <option value="sao-paulo">São Paulo</option>
+                </select>
+
+                <div class="next-row">
+                    <button type="button" id="btn-proximo" class="btn-text">Próximo</button>
+                </div>
+
+                <hr class="divider">
+
+                <div class="input-row disabled">
+                    <span>Qual mesa?</span>
+                    <input type="number" name="MesaId" class="form-control" />
+                </div>
+
+                <div class="input-row disabled">
+                    <span>Quantas pessoas?</span>
+                    <input type="text" name="Pessoas" class="form-control" />
+                </div>
+
+                <div class="input-row disabled">
+                    <span>Horário</span>
+                    <input type="time" name="HorarioReserva" class="form-control" />
+                </div>
+
+                <input type="text" name="NomeCliente" placeholder="Seu nome" class="custom-select" />
+                <input type="email" name="EmailCliente" placeholder="Email" class="custom-select" />
+                <input type="text" name="TelefoneCliente" placeholder="Telefone" class="custom-select" />
+
+                <footer>
+                    <button type="submit" id="btn-continuar" class="btn-continue">
+                        Continuar
+                    </button>
+                </footer>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/js/reserva.js"></script>

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CasaBeneditaMVC.Controllers
 {
-    public class ProdutoController : Controller
+    public class CardapioController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ProdutoController(AppDbContext context)
+        public CardapioController(AppDbContext context)
         {
             _context = context;
         }
