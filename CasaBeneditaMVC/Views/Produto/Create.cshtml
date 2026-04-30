@@ -1,0 +1,60 @@
+﻿@model CasaBeneditaMVC.Models.Produto
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Cadastrar Produto";
+}
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="mb-4">Cadastrar Produto</h2>
+
+    <form asp-action="Create" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input asp-for="Nome" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Descrição</label>
+            <input asp-for="Descricao" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Preço</label>
+            <input asp-for="Preco" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Categoria</label>
+            <select asp-for="CategoriaId" class="form-control" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="1">Entradas</option>
+                <option value="2">Pratos Principais</option>
+                <option value="3">Bebidas</option>
+                <option value="4">Sobremesas</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ImagemUrl</label>
+            <input asp-for="ImagemUrl" class="form-control" placeholder="Ex: Bebidas/Suco.png" required />
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="Disponivel" class="form-check-input" />
+            <label class="form-check-label">Disponível</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Voltar
+        </a>
+
+    </form>
+
+</div>

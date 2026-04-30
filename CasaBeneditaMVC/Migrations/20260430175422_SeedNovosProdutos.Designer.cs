@@ -4,6 +4,7 @@ using CasaBeneditaMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaBeneditaMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260430175422_SeedNovosProdutos")]
+    partial class SeedNovosProdutos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -266,106 +269,6 @@ namespace CasaBeneditaMVC.Migrations
                             ImagemUrl = "Pratos/Lombo.png",
                             Nome = "Lombo Suíno",
                             Preco = 44.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 11,
-                            CategoriaId = 3,
-                            Descricao = "Lata 350ml",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/refri_latas.jpg",
-                            Nome = "Refrigerante",
-                            Preco = 6.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 12,
-                            CategoriaId = 3,
-                            Descricao = "Suco de frutas frescas",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Suco.png",
-                            Nome = "Suco Natural",
-                            Preco = 9.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 13,
-                            CategoriaId = 3,
-                            Descricao = "Garrafa 330ml",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Cervejas.png",
-                            Nome = "Cerveja Long Neck",
-                            Preco = 14.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 14,
-                            CategoriaId = 3,
-                            Descricao = "Garrafa 500ml",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Agua.png",
-                            Nome = "Água Mineral",
-                            Preco = 4.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 15,
-                            CategoriaId = 3,
-                            Descricao = "Produção especial da casa",
-                            Disponivel = true,
-                            ImagemUrl = "Bebidas/Cervejas.png",
-                            Nome = "Cerveja Artesanal",
-                            Preco = 14.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 16,
-                            CategoriaId = 4,
-                            Descricao = "Pudim tradicional",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Pudim.png",
-                            Nome = "Pudim",
-                            Preco = 12.00m
-                        },
-                        new
-                        {
-                            ProdutoId = 17,
-                            CategoriaId = 4,
-                            Descricao = "Brownie de chocolate",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Brownie.png",
-                            Nome = "Brownie",
-                            Preco = 18.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 18,
-                            CategoriaId = 4,
-                            Descricao = "Mousse cremoso",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/Mousse.png",
-                            Nome = "Mousse de Chocolate",
-                            Preco = 16.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 19,
-                            CategoriaId = 4,
-                            Descricao = "Sobremesa especial",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/DoceTentacao.png",
-                            Nome = "Doce Tentação",
-                            Preco = 17.90m
-                        },
-                        new
-                        {
-                            ProdutoId = 20,
-                            CategoriaId = 4,
-                            Descricao = "Chocolate intenso",
-                            Disponivel = true,
-                            ImagemUrl = "Sobremesas/DeliciaChocolate.png",
-                            Nome = "Delícia de Chocolate",
-                            Preco = 19.90m
                         });
                 });
 
@@ -422,9 +325,6 @@ namespace CasaBeneditaMVC.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
-
-                    b.Property<bool>("EhAdmin")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Email")
                         .IsRequired()

@@ -17,5 +17,7 @@ namespace CasaBeneditaMVC.Models
         [Required]
         [StringLength(255)]
         public string Senha { get; set; }
+
+        public bool EhAdmin { get; set; }
     }
 }
