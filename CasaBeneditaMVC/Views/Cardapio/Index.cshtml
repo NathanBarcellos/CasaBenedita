@@ -1,285 +1,397 @@
-﻿@{
-    ViewData["Title"] = "Cardápio";
-    Layout = "_Layout";
-}
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/cardapio.css" />
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Casa Benedita</title>
+    <link rel="stylesheet" href="~/css/cardapio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 
-<header class="menu-header">
-    <div class="container">
-        <a asp-controller="Home" asp-action="Index" class="back-btn">
-            ← Voltar
-        </a>
+<body>
 
-        <div class="logo">
-            <img src="~/Images/logo.webp" width="80" />
-            <h1>Casa Benedita</h1>
+    <header class="menu-header">
+        <div class="container">
+            <a href="../Views/Home/Index.cshtml" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+            <div class="logo">
+                <img src="Images/logo.png" width="80" alt="Logo">
+                <h1>Casa Benedita</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="menu-section">
+        <div class="container">
+            <h2>🥩 PRATOS PRINCIPAIS</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Pratos/picanha.png');"></div>
+                    <div class="dish-info">
+                        <h3>Picanha da Dona Benedita</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 64,90</span>
+                            <div class="botao" onclick="addToCart('Picanha Dona Benedita', 64.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Pratos/Costela.png');"></div>
+                    <div class="dish-info">
+                        <h3>Costela ao Molho Barbecue</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 61,90</span>
+                            <div class="botao" onclick="addToCart('Costela Barbecue', 61.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Pratos/FileMignon.png');"></div>
+                    <div class="dish-info">
+                        <h3>Filé Mignon ao Molho da Vovó</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 69,90</span>
+                            <div class="botao" onclick="addToCart('Filé Mignon Vovó', 69.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Pratos/contra.png');"></div>
+                    <div class="dish-info">
+                        <h3>Contra Filé na Brasa</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 49,90</span>
+                            <div class="botao" onclick="addToCart('Contra Filé Brasa', 49.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Pratos/Lombo.png');"></div>
+                    <div class="dish-info">
+                        <h3>Lombo Suíno da Fazenda</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 44,90</span>
+                            <div class="botao" onclick="addToCart('Lombo Suíno', 44.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="container">
+            <h2>🍽️ ENTRADAS</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Entradas/Bruschetta.png');"></div>
+                    <div class="dish-info">
+                        <h3>Bruschetta Especial</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 24,90</span>
+                            <div class="botao" onclick="addToCart('Bruschetta Especial', 24.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Entradas/Carpaccio.png');"></div>
+                    <div class="dish-info">
+                        <h3>Carpaccio da Casa</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 29,90</span>
+                            <div class="botao" onclick="addToCart('Carpaccio Casa', 29.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Entradas/Batata.png');"></div>
+                    <div class="dish-info">
+                        <h3>Batata Rústica</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 19,90</span>
+                            <div class="botao" onclick="addToCart('Batata Rústica', 19.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Entradas/Bolinho.png');"></div>
+                    <div class="dish-info">
+                        <h3>Bolinho Dourado</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 22,90</span>
+                            <div class="botao" onclick="addToCart('Bolinho Dourado', 22.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Entradas/Dadinhos.png');"></div>
+                    <div class="dish-info">
+                        <h3>Dadinhos Crocantes</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 21,90</span>
+                            <div class="botao" onclick="addToCart('Dadinhos Crocantes', 21.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="container">
+            <h2>🍰 SOBREMESAS</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Sobremesas/Pudim.png');"></div>
+                    <div class="dish-info">
+                        <h3>Pudim Dona Benedita</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 12,00</span>
+                            <div class="botao" onclick="addToCart('Pudim Cremoso', 12.00)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Sobremesas/Brownie.png');"></div>
+                    <div class="dish-info">
+                        <h3>Brownie da Casa</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 18,90</span>
+                            <div class="botao" onclick="addToCart('Brownie Casa', 18.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Sobremesas/Mousse.jpg');"></div>
+                    <div class="dish-info">
+                        <h3>Mousse de Chocolate</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 14,90</span>
+                            <div class="botao" onclick="addToCart('Mousse Chocolate', 14.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Sobremesas/DoceTentacao.png');"></div>
+                    <div class="dish-info">
+                        <h3>Doce Tentação</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 19,90</span>
+                            <div class="botao" onclick="addToCart('Doce Tentação', 19.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Sobremesas/DeliciaChocolate.png');"></div>
+                    <div class="dish-info">
+                        <h3>Delícia de Chocolate</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 22,90</span>
+                            <div class="botao" onclick="addToCart('Delícia Chocolate', 22.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <div class="container">
+            <h2>🍹 BEBIDAS</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Bebidas/refri_latas.jpg');"></div>
+                    <div class="dish-info">
+                        <h3>Refrigerante</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 6,00</span>
+                            <div class="botao" onclick="addToCart('Refrigerante', 6.00)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Bebidas/Suco.png');"></div>
+                    <div class="dish-info">
+                        <h3>Suco Natural</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 9,90</span>
+                            <div class="botao" onclick="addToCart('Suco Natural', 9.90)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Bebidas/Cervejas.png');"></div>
+                    <div class="dish-info">
+                        <h3>Cerveja Long Neck</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 14,00</span>
+                            <div class="botao" onclick="addToCart('Cerveja Long Neck', 14.00)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Bebidas/Agua.png');"></div>
+                    <div class="dish-info">
+                        <h3>Água Mineral</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 4,00</span>
+                            <div class="botao" onclick="addToCart('Água Mineral', 4.00)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image" style="background-image: url('Images/Bebidas/Cervejas.png');"></div>
+                    <div class="dish-info">
+                        <h3>Cerveja Artesanal</h3>
+                        <div class="preco-botao">
+                            <span class="price">R$ 14,00</span>
+                            <div class="botao" onclick="addToCart('Cerveja Artesanal', 14.00)">Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-button" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+    </div>
+
+    <div id="cart" class="cart">
+        <div style="display:flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <h2 style="margin:0;">🛒 Seu Pedido</h2>
+            <button onclick="toggleCart()" style="background:none; border:none; font-size: 24px; cursor:pointer; color:#8B4513;">&times;</button>
+        </div>
+
+        <div id="cart-items">
+            <p style="text-align:center; padding:20px; color:#666;">Seu carrinho está vazio 🛍️</p>
+        </div>
+
+        <div style="border-top: 2px solid #eee; padding-top: 15px;">
+            <div style="display:flex;justify-content:space-between; margin-bottom: 5px;">
+                <span>Subtotal</span>
+                <span id="subtotal">R$ 0,00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between; margin-bottom: 5px;">
+                <span>Taxa (8%)</span>
+                <span id="tax">R$ 0,00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-weight:bold; font-size: 1.2rem; margin-top:10px; color:#27ae60;">
+                <span>Total</span>
+                <span id="total">R$ 0,00</span>
+            </div>
+            <button style="margin-top:20px;width:100%;padding:15px;background:#27ae60;color:white;border:none;border-radius:8px; font-weight:bold; cursor:pointer; font-size:1rem;">
+                Finalizar Pedido
+            </button>
         </div>
     </div>
-</header>
 
-<!-- PRATOS -->
-<section class="menu-section">
-    <div class="container">
-        <h2>🥩 PRATOS PRINCIPAIS</h2>
+    <script>
+        let cart = [];
 
-        <div class="dishes-grid">
+        function addToCart(name, price) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCart();
+            document.getElementById("cart").classList.add("active");
+        }
 
-            <div class="dish-card">
-                <img src="~/Images/Pratos/picanha.png" />
-                <div class="dish-info">
-                    <h3>Picanha da Dona Benedita</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 64,90</span>
-                        <div class="botao">Comprar</div>
+        function updateCart() {
+            const container = document.getElementById("cart-items");
+            const subtotalEl = document.getElementById("subtotal");
+            const taxEl = document.getElementById("tax");
+            const totalEl = document.getElementById("total");
+            const countEl = document.getElementById("cart-count");
+
+            container.innerHTML = "";
+            let subtotal = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = "<p style='text-align:center; padding:20px; color:#666;'>Seu carrinho está vazio 🛍️</p>";
+                subtotalEl.textContent = "R$ 0,00";
+                taxEl.textContent = "R$ 0,00";
+                totalEl.textContent = "R$ 0,00";
+                countEl.textContent = "0";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.qty;
+                count += item.qty;
+
+                const div = document.createElement("div");
+                div.style.display = "flex";
+                div.style.justifyContent = "space-between";
+                div.style.alignItems = "center";
+                div.style.padding = "10px 0";
+                div.style.borderBottom = "1px solid #eee";
+
+                div.innerHTML = `
+                    <div style="flex:1">
+                        <strong style="font-size:0.9rem">${item.name}</strong><br>
+                        <small>R$ ${item.price.toFixed(2)}</small>
                     </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Pratos/Costela.png" />
-                <div class="dish-info">
-                    <h3>Costela ao Molho Barbecue</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 61,90</span>
-                        <div class="botao">Comprar</div>
+                    <div style="display:flex; align-items:center; gap:8px">
+                        <button onclick="changeQty(${index}, -1)" style="width:25px; cursor:pointer">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQty(${index}, 1)" style="width:25px; cursor:pointer">+</button>
                     </div>
-                </div>
-            </div>
+                    <button onclick="removeItem(${index})" style="background:none; border:none; color:red; margin-left:10px; cursor:pointer">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
 
-            <div class="dish-card">
-                <img src="~/Images/Pratos/FileMignon.png" />
-                <div class="dish-info">
-                    <h3>Filé Mignon ao Molho da Vovó</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 69,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
+            let tax = subtotal * 0.08;
+            let total = subtotal + tax;
 
-            <div class="dish-card">
-                <img src="~/Images/Pratos/contra.png" />
-                <div class="dish-info">
-                    <h3>Contra Filé na Brasa</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 49,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
+            subtotalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            taxEl.textContent = `R$ ${tax.toFixed(2).replace('.', ',')}`;
+            totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            countEl.textContent = count;
+        }
 
-            <div class="dish-card">
-                <img src="~/Images/Pratos/Lombo.png" />
-                <div class="dish-info">
-                    <h3>Lombo Suíno da Fazenda</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 44,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCart();
+        }
 
-        </div>
-    </div>
-</section>
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
 
-<!-- ENTRADAS -->
-<section class="menu-section">
-    <div class="container">
-        <h2>🍽️ ENTRADAS</h2>
+        function toggleCart() {
+            document.getElementById("cart").classList.toggle("active");
+        }
+    </script>
+</body>
 
-        <div class="dishes-grid">
-
-            <div class="dish-card">
-                <img src="~/Images/Entradas/Bruschetta.png" />
-                <div class="dish-info">
-                    <h3>Bruschetta Especial</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 24,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Entradas/Carpaccio.png" />
-                <div class="dish-info">
-                    <h3>Carpaccio da Casa</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 29,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Entradas/Batata.png" />
-                <div class="dish-info">
-                    <h3>Batata Rústica</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 19,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Entradas/Bolinho.png" />
-                <div class="dish-info">
-                    <h3>Bolinho Dourado</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 22,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Entradas/Dadinhos.png" />
-                <div class="dish-info">
-                    <h3>Dadinhos Crocantes</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 21,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- SOBREMESAS -->
-<section class="menu-section">
-    <div class="container">
-        <h2>🍰 SOBREMESAS</h2>
-
-        <div class="dishes-grid">
-
-            <div class="dish-card">
-                <img src="~/Images/Sobremesas/Pudim.png" />
-                <div class="dish-info">
-                    <h3>Pudim</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 12,00</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Sobremesas/Brownie.png" />
-                <div class="dish-info">
-                    <h3>Brownie</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 18,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Sobremesas/Mousse.png" />
-                <div class="dish-info">
-                    <h3>Mousse de Chocolate</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 14,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Sobremesas/DoceTentacao.png" />
-                <div class="dish-info">
-                    <h3>Doce Tentação</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 19,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Sobremesas/DeliciaChocolate.png" />
-                <div class="dish-info">
-                    <h3>Delícia Chocolate</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 22,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- BEBIDAS -->
-<section class="menu-section">
-    <div class="container">
-        <h2>🍹 BEBIDAS</h2>
-
-        <div class="dishes-grid">
-
-            <div class="dish-card">
-                <img src="~/Images/Bebidas/refri_latas.jpg" />
-                <div class="dish-info">
-                    <h3>Refrigerante</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 6,00</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Bebidas/Suco.png" />
-                <div class="dish-info">
-                    <h3>Suco Natural</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 9,90</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Bebidas/Cervejas.png" />
-                <div class="dish-info">
-                    <h3>Cerveja Long Neck</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 14,00</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Bebidas/Agua.png" />
-                <div class="dish-info">
-                    <h3>Água Mineral</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 4,00</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dish-card">
-                <img src="~/Images/Bebidas/Cervejas.png" />
-                <div class="dish-info">
-                    <h3>Cerveja Artesanal</h3>
-                    <div class="preco-botao">
-                        <span class="price">R$ 14,00</span>
-                        <div class="botao">Comprar</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+</html>

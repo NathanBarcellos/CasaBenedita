@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\js\NovaPasta\**" />
+    <Content Remove="wwwroot\js\NovaPasta\**" />
+    <EmbeddedResource Remove="wwwroot\js\NovaPasta\**" />
+    <None Remove="wwwroot\js\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\MAIN.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Images\.DS_Store" />
   </ItemGroup>
 
@@ -21,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\js\NovaPasta1\" />
   </ItemGroup>
 
 </Project>
