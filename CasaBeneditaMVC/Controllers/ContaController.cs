@@ -20,10 +20,12 @@ namespace CasaBeneditaMVC.Controllers
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
 
+                TempData["Sucesso"] = "Usuário cadastrado com sucesso!";
+
                 return RedirectToAction("Index", "Home");
             }
 
-            return BadRequest();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

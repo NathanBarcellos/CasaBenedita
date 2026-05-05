@@ -1,0 +1,125 @@
+﻿:root {
+    --primary: #2563eb;
+    --success: #10b981;
+    --bg-light: #f8fafc;
+    --border: #e2e8f0;
+    --text: #1e293b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+}
+
+.checkout-container, .success-container {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin: 50px auto;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.payment-methods {
+    display: flex;
+    background: var(--bg-light);
+    padding: 5px;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.method-btn {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+    font-weight: 600;
+    color: #64748b;
+    border-radius: 0.4rem;
+}
+
+    .method-btn.active {
+        background: white;
+        color: var(--primary);
+    }
+
+.tab-content {
+    display: none;
+}
+
+    .tab-content.active {
+        display: block;
+    }
+
+.qr-placeholder {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.copy-paste {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 1.5rem;
+}
+
+    .copy-paste input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid var(--border);
+    }
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border);
+    }
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+    .confirm-btn.success {
+        background: var(--success);
+    }
+
+.hidden {
+    display: none;
+}
+
+.success-container {
+    text-align: center;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--success);
+    color: white;
+    font-size: 30px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}

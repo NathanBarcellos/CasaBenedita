@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Reserva Confirmada";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva Confirmada - Casa Benedita</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card-sucesso">
+
+            <div class="icone-sucesso">
+                ✓
+            </div>
+
+            <h1>CASA BENEDITA</h1>
+
+            <h2>Reserva efetuada com sucesso!</h2>
+
+            <p>
+                Sua reserva foi registrada em nosso sistema.
+            </p>
+
+            <a href="/Home/Index" class="btn-voltar">
+                Voltar para o início
+            </a>
+
+        </div>
+    </div>
+
+</body>
+
+<style>
+    body {
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 420px;
+        padding: 20px;
+    }
+
+    .card-sucesso {
+        background: white;
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .icone-sucesso {
+        width: 70px;
+        height: 70px;
+        background: #28a745;
+        color: white;
+        border-radius: 50%;
+        margin: 0 auto 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 34px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        color: #000;
+    }
+
+    h2 {
+        color: #28a745;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        margin-bottom: 25px;
+    }
+
+    .btn-voltar {
+        display: inline-block;
+        background: #c5a059;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .btn-voltar:hover {
+            background: #b08d45;
+            color: white;
+        }
+</style>
+
+</html>

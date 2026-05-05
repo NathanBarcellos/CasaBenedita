@@ -13,9 +13,8 @@ namespace CasaBeneditaMVC.Models
         public DateTime DataReserva { get; set; }
         public string HorarioReserva { get; set; }
 
-        public int MesaId { get; set; }
-        public Mesa Mesa { get; set; }
-
+        public int? MesaId { get; set; } 
+        public Mesa? Mesa { get; set; }  
         public string StatusReserva { get; set; }
 
         public int? UsuarioId { get; set; }

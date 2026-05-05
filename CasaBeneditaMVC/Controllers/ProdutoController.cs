@@ -46,15 +46,18 @@ namespace CasaBeneditaMVC.Controllers
             if (!EhAdmin())
                 return RedirectToAction("Index", "Home");
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Produtos.Add(produto);
-                _context.SaveChanges();
-
-                return RedirectToAction("Index");
+                return View(produto);
             }
 
-            return View(produto);
+            // 🔥 SEMPRE DISPONÍVEL
+            produto.Disponivel = true;
+
+            _context.Produtos.Add(produto);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)

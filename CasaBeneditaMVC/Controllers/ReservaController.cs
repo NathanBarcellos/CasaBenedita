@@ -1,5 +1,7 @@
 ﻿using CasaBeneditaMVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 
 namespace CasaBeneditaMVC.Controllers
 {
@@ -12,43 +14,51 @@ namespace CasaBeneditaMVC.Controllers
             _context = context;
         }
 
-        // 👉 ESSA PARTE FALTAVA
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Sucesso()
         {
             return View();
         }
 
         [HttpPost]
         public IActionResult Criar(
-            int MesaId,
+            DateTime DataReserva,
             string HorarioReserva,
             string NomeCliente,
             string EmailCliente,
             string TelefoneCliente)
         {
-            var dataHoje = DateTime.Today;
+            if (string.IsNullOrEmpty(HorarioReserva) || DataReserva == default)
+            {
+                TempData["Erro"] = "Escolha uma data e um horário.";
+                return RedirectToAction("Index");
+            }
 
             var horarioSelecionado = TimeSpan.Parse(HorarioReserva);
 
             var reservasDoDia = _context.Reservas
-                .Where(r => r.MesaId == MesaId && r.DataReserva.Date == dataHoje)
+                .Where(r => r.DataReserva.Date == DataReserva.Date)
                 .ToList();
 
-            bool mesaOcupada = reservasDoDia.Any(r =>
+            bool horarioOcupado = reservasDoDia.Any(r =>
                 Math.Abs((TimeSpan.Parse(r.HorarioReserva) - horarioSelecionado).TotalMinutes) < 60
             );
 
-            if (mesaOcupada)
+            if (horarioOcupado)
             {
-                TempData["Erro"] = "Essa mesa já está reservada em um horário próximo.";
+                TempData["Erro"] = "Já existe uma reserva em um horário próximo.";
                 return RedirectToAction("Index");
             }
 
             var reserva = new Reserva
             {
-                MesaId = MesaId,
+                MesaId = null,
+                DataReserva = DataReserva,
                 HorarioReserva = HorarioReserva,
-                DataReserva = DateTime.Now,
                 NomeCliente = NomeCliente,
                 EmailCliente = EmailCliente,
                 TelefoneCliente = TelefoneCliente,
@@ -58,9 +68,7 @@ namespace CasaBeneditaMVC.Controllers
             _context.Reservas.Add(reserva);
             _context.SaveChanges();
 
-            TempData["Sucesso"] = "Reserva confirmada com sucesso!";
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Sucesso");
         }
     }
 }
