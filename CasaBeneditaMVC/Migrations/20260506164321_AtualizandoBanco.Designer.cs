@@ -4,6 +4,7 @@ using CasaBeneditaMVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaBeneditaMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260506164321_AtualizandoBanco")]
+    partial class AtualizandoBanco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,35 +63,6 @@ namespace CasaBeneditaMVC.Migrations
                             CategoriaId = 4,
                             Nome = "Sobremesas"
                         });
-                });
-
-            modelBuilder.Entity("CasaBeneditaMVC.Models.ItemPedido", b =>
-                {
-                    b.Property<int>("ItemPedidoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemPedidoId"));
-
-                    b.Property<int>("PedidoId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("PrecoUnitario")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
-
-                    b.HasKey("ItemPedidoId");
-
-                    b.HasIndex("PedidoId");
-
-                    b.HasIndex("ProdutoId");
-
-                    b.ToTable("ItensPedido");
                 });
 
             modelBuilder.Entity("CasaBeneditaMVC.Models.Mesa", b =>
@@ -534,25 +508,16 @@ namespace CasaBeneditaMVC.Migrations
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
-                });
 
-            modelBuilder.Entity("CasaBeneditaMVC.Models.ItemPedido", b =>
-                {
-                    b.HasOne("CasaBeneditaMVC.Models.Pedido", "Pedido")
-                        .WithMany("ItensPedido")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CasaBeneditaMVC.Models.Produto", "Produto")
-                        .WithMany("ItensPedido")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pedido");
-
-                    b.Navigation("Produto");
+                    b.HasData(
+                        new
+                        {
+                            UsuarioId = 1,
+                            EhAdmin = true,
+                            Email = "admin@casabenedita.com",
+                            Nome = "Administrador",
+                            Senha = "123456"
+                        });
                 });
 
             modelBuilder.Entity("CasaBeneditaMVC.Models.Pagamento", b =>
@@ -613,14 +578,7 @@ namespace CasaBeneditaMVC.Migrations
 
             modelBuilder.Entity("CasaBeneditaMVC.Models.Pedido", b =>
                 {
-                    b.Navigation("ItensPedido");
-
                     b.Navigation("Pagamentos");
-                });
-
-            modelBuilder.Entity("CasaBeneditaMVC.Models.Produto", b =>
-                {
-                    b.Navigation("ItensPedido");
                 });
 #pragma warning restore 612, 618
         }

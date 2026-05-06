@@ -13,6 +13,9 @@ namespace CasaBeneditaMVC.Models
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Pagamento> Pagamentos { get; set; }
+        public DbSet<ItemPedido> ItensPedido { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +23,14 @@ namespace CasaBeneditaMVC.Models
 
             modelBuilder.Entity<Produto>()
                 .Property(p => p.Preco)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Pedido>()
+                .Property(p => p.ValorTotal)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Pagamento>()
+                .Property(p => p.Valor)
                 .HasPrecision(10, 2);
 
             modelBuilder.Entity<Categoria>().HasData(

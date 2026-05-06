@@ -5,86 +5,165 @@
 <link rel="stylesheet" href="~/css/checkout.css">
 
 <div class="checkout-container" id="checkout-box">
+
     <h2>Finalizar Pagamento</h2>
 
     <div class="payment-methods">
-        <button class="method-btn active" onclick="switchTab('pix')">PIX</button>
-        <button class="method-btn" onclick="switchTab('card')">Cartão de Crédito</button>
+
+        <button class="method-btn active"
+                onclick="switchTab('pix')">
+
+            PIX
+
+        </button>
+
+        <button class="method-btn"
+                onclick="switchTab('card')">
+
+            Cartão de Crédito
+
+        </button>
+
     </div>
 
     <!-- PIX -->
-    <div id="content-pix" class="tab-content active">
+    <div id="content-pix"
+         class="tab-content active">
+
         <div class="qr-placeholder">
+
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ExemploPix">
+
             <p>Escaneie o código para pagar</p>
+
         </div>
 
         <div class="copy-paste">
-            <input type="text" value="00020101021226850014br.gov.bcb.pix..." readonly>
-            <button onclick="alert('Chave copiada!')">Copiar</button>
+
+            <input type="text"
+                   value="00020101021226850014br.gov.bcb.pix..."
+                   readonly>
+
+            <button type="button"
+                    onclick="alert('Chave copiada!')">
+
+                Copiar
+
+            </button>
+
         </div>
 
-        <button class="confirm-btn success" onclick="finalizarCompra()">
-            Já realizei o pagamento
-        </button>
+        <form method="post"
+              action="/Pedido/FinalizarPedido">
+
+            <input type="hidden"
+                   id="carrinhoPix"
+                   name="carrinhoJson">
+
+            <button type="submit"
+                    class="confirm-btn success">
+
+                Já realizei o pagamento
+
+            </button>
+
+        </form>
+
     </div>
 
     <!-- CARTÃO -->
-    <div id="content-card" class="tab-content">
+    <div id="content-card"
+         class="tab-content">
+
         <div class="form-group">
+
             <label>Número do Cartão</label>
-            <input type="text" placeholder="0000 0000 0000 0000">
+
+            <input type="text"
+                   placeholder="0000 0000 0000 0000">
+
         </div>
 
         <div class="form-row">
+
             <div class="form-group">
+
                 <label>Validade</label>
-                <input type="text" placeholder="MM/AA">
+
+                <input type="text"
+                       placeholder="MM/AA">
+
             </div>
 
             <div class="form-group">
+
                 <label>CVV</label>
-                <input type="text" placeholder="123">
+
+                <input type="text"
+                       placeholder="123">
+
             </div>
+
         </div>
 
         <div class="form-group">
+
             <label>Nome no Cartão</label>
-            <input type="text" placeholder="Como escrito no cartão">
+
+            <input type="text"
+                   placeholder="Como escrito no cartão">
+
         </div>
 
-        <button class="confirm-btn" onclick="finalizarCompra()">
-            Pagar Agora
-        </button>
+        <form method="post"
+              action="/Pedido/FinalizarPedido">
+
+            <input type="hidden"
+                   id="carrinhoCard"
+                   name="carrinhoJson">
+
+            <button type="submit"
+                    class="confirm-btn">
+
+                Pagar Agora
+
+            </button>
+
+        </form>
+
     </div>
 </div>
 
-<!-- SUCESSO -->
-<div id="success-screen" class="success-container hidden">
-    <div class="success-icon">✓</div>
-    <h1>Compra Confirmada!</h1>
-    <p>Seu pedido <strong>#0001</strong> foi processado com sucesso.</p>
-    <button class="confirm-btn" onclick="location.href='/'">
-        Voltar à loja
-    </button>
-</div>
-
 <script>
-    function switchTab(tab) {
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.method-btn').forEach(el => el.classList.remove('active'));
 
-        document.getElementById('content-' + tab).classList.add('active');
+    function switchTab(tab) {
+
+        document.querySelectorAll('.tab-content')
+            .forEach(el => el.classList.remove('active'));
+
+        document.querySelectorAll('.method-btn')
+            .forEach(el => el.classList.remove('active'));
+
+        document.getElementById('content-' + tab)
+            .classList.add('active');
 
         if (tab === 'pix') {
-            document.querySelectorAll('.method-btn')[0].classList.add('active');
+
+            document.querySelectorAll('.method-btn')[0]
+                .classList.add('active');
+
         } else {
-            document.querySelectorAll('.method-btn')[1].classList.add('active');
+
+            document.querySelectorAll('.method-btn')[1]
+                .classList.add('active');
         }
     }
 
-    function finalizarCompra() {
-        document.getElementById('checkout-box').style.display = 'none';
-        document.getElementById('success-screen').classList.remove('hidden');
-    }
+    // PEGA O CARRINHO DO LOCAL STORAGE
+    const carrinho = localStorage.getItem("carrinho");
+
+    // ENVIA PARA OS INPUTS HIDDEN
+    document.getElementById("carrinhoPix").value = carrinho;
+    document.getElementById("carrinhoCard").value = carrinho;
+
 </script>

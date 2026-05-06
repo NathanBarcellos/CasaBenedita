@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Compra Confirmada";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+    body {
+        background: #f5f5f5;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .success-container {
+        max-width: 500px;
+        margin: 80px auto;
+        background: white;
+        border-radius: 20px;
+        padding: 50px 40px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    .success-icon {
+        width: 90px;
+        height: 90px;
+        background: #27ae60;
+        border-radius: 50%;
+        margin: 0 auto 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 40px;
+    }
+
+    h1 {
+        font-size: 48px;
+        color: #111;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 20px;
+        color: #666;
+        margin-bottom: 35px;
+    }
+
+    .btn-voltar {
+        display: inline-block;
+        background: #2f5fe3;
+        color: white;
+        padding: 16px 40px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-voltar:hover {
+            background: #1d49c7;
+        }
+</style>
+
+<div class="success-container">
+
+    <img src="~/Images/logo.png" class="logo" alt="Casa Benedita">
+
+    <div class="success-icon">
+        <i class="fas fa-check"></i>
+    </div>
+
+    <h1>Compra Confirmada!</h1>
+
+    <p>Seu pedido foi processado com sucesso.</p>
+
+    <a href="/Cardapio" class="btn-voltar">
+        Voltar à Loja
+    </a>
+
+</div>

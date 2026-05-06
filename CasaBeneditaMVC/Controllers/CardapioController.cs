@@ -13,13 +13,19 @@ namespace CasaBeneditaMVC.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string pesquisa)
         {
             var produtos = _context.Produtos
                 .Include(p => p.Categoria)
-                .ToList();
+                .AsQueryable();
 
-            return View(produtos);
+            if (!string.IsNullOrEmpty(pesquisa))
+            {
+                produtos = produtos.Where(p =>
+                    p.Nome.Contains(pesquisa));
+            }
+
+            return View(produtos.ToList());
         }
     }
 }

@@ -19,6 +19,27 @@
 
 <body>
 
+    @using Microsoft.AspNetCore.Http
+
+    @{
+        var usuarioLogado = Context.Session.GetString("UsuarioLogado");
+    }
+
+    @if (!string.IsNullOrEmpty(usuarioLogado))
+    {
+        <div style="
+                position: fixed;
+                top: 20px;
+                right: 30px;
+                z-index: 9999;
+                color: #cf631a;
+                font-weight: 600;
+                font-family: 'Roboto', sans-serif;
+                font-size: 15px;">
+            Bem-vindo, @usuarioLogado
+        </div>
+    }
+
     @RenderBody()
 
     <!-- LOGIN MODAL -->

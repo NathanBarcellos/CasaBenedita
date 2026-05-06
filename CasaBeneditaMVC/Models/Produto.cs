@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CasaBeneditaMVC.Models
 {
@@ -25,5 +26,6 @@ namespace CasaBeneditaMVC.Models
         public int CategoriaId { get; set; }
 
         public Categoria? Categoria { get; set; }
+        public List<ItemPedido>? ItensPedido { get; set; }
     }
 }
