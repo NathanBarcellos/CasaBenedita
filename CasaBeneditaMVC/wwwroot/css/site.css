@@ -19,6 +19,10 @@ body {
     margin: 0;
 }
 
+.img {
+    width:239px
+}
+
 a {
     color: var(--accent-color);
     text-decoration: none;
@@ -27,13 +31,14 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif !important;
+   
     color: var(--heading-color);
 }
 
 /* HEADER */
 .header-overlay {
     position: absolute;
-    top: 0;
+    top: -22px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -200,77 +205,6 @@ section {
         margin-bottom: 8px;
     }
 
-/* MOBILE */
-@media (max-width: 991px) {
-    .navmenu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 280px;
-        height: 100vh;
-        background: #9A3E17;
-        display: flex;
-        flex-direction: column;
-        padding: 80px 30px;
-        transition: 0.4s ease-in-out;
-        z-index: 9999;
-        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
-    }
-
-        .navmenu.active {
-            left: 0;
-        }
-
-        .navmenu ul {
-            flex-direction: column;
-            gap: 25px;
-            height: auto;
-        }
-
-        .navmenu a {
-            font-size: 20px;
-            color: #fff;
-        }
-}
-
-/* Footer */
-.footer-pro {
-    background: #9A3E17;
-    color: #fff;
-    padding: 40px 20px;
-}
-
-.footer-container {
-    max-width: 1400px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-@media (max-width: 900px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.footer-col iframe {
-    width: 100%;
-    height: 180px;
-    border-radius: 8px;
-    border: none;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
-    .footer-col ul li {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-    }
 
 /* RESERVA */
 .reserva-wrapper {
@@ -323,4 +257,84 @@ section {
     padding: 12px 60px;
     border-radius: 25px;
     font-weight: bold;
+}
+
+.logo2 {
+    display: flex;
+    width:50%;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente (se houver altura definida) */
+    width: 100%; /* Garante que o container ocupe a largura total */
+    height: 50%;
+}
+
+.menu-hamburguer {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .navmenu {
+        display: none;
+    }
+
+    .menu-hamburguer {
+        display: flex;
+    }
+
+    .fa-solid, .fas {
+        font-weight: 900;
+        color: white;
+        font-size: 32px;
+    }
+
+
+
+
+
+
+
+    /* MENU MOBILE */
+    @media (max-width: 768px) {
+
+        .navmenu {
+            display: none;
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            background: rgba(0,0,0,0.95);
+            width: 250px;
+            border-radius: 10px;
+            padding: 20px;
+            z-index: 999;
+        }
+
+            .navmenu.active {
+                display: block;
+            }
+
+            .navmenu ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .navmenu a {
+                color: white;
+                font-size: 18px;
+                display: block;
+            }
+
+        .menu-hamburguer {
+            display: flex;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .fa-bars {
+            color: white;
+            font-size: 32px;
+        }
+    }
+ 
+
 }

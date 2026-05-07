@@ -24,8 +24,7 @@
 
 <body class="index-page">
 
- 
-    
+
 
     <header id="header" class="header-overlay d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
@@ -34,6 +33,7 @@
                 <h1 class="logo-text">CASA BENEDITA</h1>
             </a>
 
+            <!-- Menu de Navegação -->
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a asp-controller="Home" asp-action="Index">INÍCIO</a></li>
@@ -41,15 +41,21 @@
                     <li><a asp-controller="Reserva" asp-action="Index">RESERVAS</a></li>
                     <li class="d-lg-none"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">ENTRAR</a></li>
                 </ul>
+
             </nav>
+           
+            <div class="menu-hamburguer" id="btnMenu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
 
             <div class="d-flex align-items-center gap-3">
                 <a href="#" class="btn-entrar d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#loginModal">ENTRAR</a>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list" style="font-size: 32px; color: #fff; cursor: pointer;"></i>
+
+@*                 <!-- Botão Hambúrguer: Troquei d-xl-none por d-lg-none para aparecer antes -->
+                <i class="mobile-nav-toggle d-lg-none bi bi-list"></i> *@
             </div>
         </div>
     </header>
-
     <main>
         <section class="hero-full">
             <img src="~/Images/Fachada.png" alt="Banner" class="hero-bg">
@@ -134,6 +140,15 @@
     <script src="../wwwroot/js/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="../wwwroot/js/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="../wwwroot/js/main.js"></script>
+
+    <script>
+        const btnMenu = document.getElementById("btnMenu");
+        const navMenu = document.getElementById("navmenu");
+
+        btnMenu.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    </script>
 
 </body>
 </html>

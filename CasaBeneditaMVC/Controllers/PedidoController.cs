@@ -22,7 +22,14 @@ namespace CasaBeneditaMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult FinalizarPedido(string carrinhoJson)
+        public IActionResult FinalizarPedido(
+            string carrinhoJson,
+            string rua,
+            string numero,
+            string bairro,
+            string cidade,
+            string cep,
+            string complemento)
         {
             // CONVERTE JSON EM LISTA
             var carrinho = JsonSerializer.Deserialize<List<CarrinhoItem>>(carrinhoJson);
@@ -40,6 +47,14 @@ namespace CasaBeneditaMVC.Controllers
                 DataPedido = DateTime.Now,
                 ValorTotal = total,
                 Status = "Pedido Confirmado",
+
+                Rua = rua,
+                Numero = numero,
+                Bairro = bairro,
+                Cidade = cidade,
+                CEP = cep,
+                Complemento = complemento,
+
                 UsuarioId = 1
             };
 

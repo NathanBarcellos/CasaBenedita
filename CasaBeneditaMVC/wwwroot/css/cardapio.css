@@ -38,8 +38,10 @@ body {
 }
 
     .logo h1 {
-        font-family: 'Playfair Display', serif;
-        font-size: 24px;
+        font-family: 'Cinzel', serif;
+        font-weight: 700; /* Bold */
+        text-transform: uppercase;
+        color:azure;
     }
 
 .back-btn {
