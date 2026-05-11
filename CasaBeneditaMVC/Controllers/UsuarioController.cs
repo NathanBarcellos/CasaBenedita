@@ -19,7 +19,7 @@ namespace CasaBeneditaMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                usuario.EhAdmin = false; 
+                usuario.EhAdmin = false;
 
                 _context.Usuarios.Add(usuario);
                 _context.SaveChanges();
@@ -28,7 +28,6 @@ namespace CasaBeneditaMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-       
         [HttpPost]
         public IActionResult Login(string email, string senha)
         {
@@ -47,10 +46,11 @@ namespace CasaBeneditaMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        
+        // LOGOUT
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -73,7 +73,7 @@ namespace CasaBeneditaMVC.Controllers
                 _context.SaveChanges();
             }
 
-            return Content("Admin criado! Email: admin@admin.com | Senha: 123");
+            return Content("Admin criado!");
         }
     }
 }

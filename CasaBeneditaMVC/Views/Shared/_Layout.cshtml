@@ -16,7 +16,20 @@
 
     @RenderSection("Styles", required: false)
 </head>
+<header>
 
+    @if (Context.Session.GetString("UsuarioLogado") != null)
+    {
+        <a asp-controller="Usuario"
+           asp-action="Logout"
+           class="logout-btn">
+
+            <i class="fas fa-sign-out-alt"></i>
+            Sair
+
+        </a>
+    }
+</header>
 <body>
 
     @using Microsoft.AspNetCore.Http
@@ -198,6 +211,6 @@
             modal.show();
         </script>
     }
-
+    @using Microsoft.AspNetCore.Http
 </body>
 </html>

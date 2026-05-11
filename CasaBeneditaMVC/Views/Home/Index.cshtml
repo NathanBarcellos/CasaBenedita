@@ -4,151 +4,283 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <title>Casa Benedita</title>
+
     <meta name="description" content="Restaurante Dona Benedita - Comida caseira e saudável.">
     <meta name="keywords" content="restaurante, comida caseira, dona benedita">
 
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 
-    <link href=""
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap"
           rel="stylesheet">
-    <link href="../wwwroot/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../wwwroot/js/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../wwwroot/js/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="~/wwwroot/js/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <link href="~/css/site.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body class="index-page">
 
+    <header id="header"
+            class="header-overlay d-flex align-items-center">
 
-
-    <header id="header" class="header-overlay d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
-            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
-                <img src="~/Images/logo.png" alt="Logo" class="logo-icon">
-                <h1 class="logo-text">CASA BENEDITA</h1>
+
+            <!-- LOGO -->
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="logo d-flex align-items-center">
+
+                <img src="~/Images/logo.png"
+                     alt="Logo"
+                     class="logo-icon">
+
+                <h1 class="logo-text">
+                    CASA BENEDITA
+                </h1>
+
             </a>
 
-            <!-- Menu de Navegação -->
-            <nav id="navmenu" class="navmenu">
+            <!-- MENU -->
+            <nav id="navmenu"
+                 class="navmenu">
+
                 <ul>
-                    <li><a asp-controller="Home" asp-action="Index">INÍCIO</a></li>
-                    <li><a asp-controller="Cardapio" asp-action="Index">CARDÁPIO</a></li>
-                    <li><a asp-controller="Reserva" asp-action="Index">RESERVAS</a></li>
-                    <li class="d-lg-none"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">ENTRAR</a></li>
+
+                    <li>
+                        <a asp-controller="Home"
+                           asp-action="Index">
+
+                            INÍCIO
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Cardapio"
+                           asp-action="Index">
+
+                            CARDÁPIO
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-controller="Reserva"
+                           asp-action="Index">
+
+                            RESERVAS
+
+                        </a>
+                    </li>
+
+                    <!-- BOTÃO LOGIN / LOGOUT -->
+                    <li>
+
+                        @using Microsoft.AspNetCore.Http
+
+                        @if (Context.Session.GetString("UsuarioLogado") == null)
+                        {
+                            <a href="#"
+                               class="btn-entrar"
+                               data-bs-toggle="modal"
+                               data-bs-target="#loginModal">
+
+                                ENTRAR
+
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Usuario"
+                               asp-action="Logout"
+                               class="btn-entrar">
+
+                                SAIR
+
+                            </a>
+                        }
+
+                    </li>
+
                 </ul>
 
             </nav>
-           
-            <div class="menu-hamburguer" id="btnMenu">
+
+            <!-- MENU HAMBURGUER -->
+            <div class="menu-hamburguer"
+                 id="btnMenu">
+
                 <i class="fa-solid fa-bars"></i>
+
             </div>
 
-            <div class="d-flex align-items-center gap-3">
-                <a href="#" class="btn-entrar d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#loginModal">ENTRAR</a>
-
-@*                 <!-- Botão Hambúrguer: Troquei d-xl-none por d-lg-none para aparecer antes -->
-                <i class="mobile-nav-toggle d-lg-none bi bi-list"></i> *@
-            </div>
         </div>
+
     </header>
+
+    <!-- HERO -->
     <main>
+
         <section class="hero-full">
-            <img src="~/Images/Fachada.png" alt="Banner" class="hero-bg">
+
+            <img src="~/Images/Fachada.png"
+                 alt="Banner"
+                 class="hero-bg">
+
             <div class="hero-container">
-                <div class="hero-content" data-aos="fade-up">
+
+                <div class="hero-content"
+                     data-aos="fade-up">
+
                     <h2>Faça sua Reserva</h2>
-                    <p>Garanta seu lugar com mais conforto.</p>
-                    <a asp-controller="Reserva" asp-action="Index" class="btn-book">RESERVE AGORA SUA MESA</a>
+
+                    <p>
+                        Garanta seu lugar com mais conforto.
+                    </p>
+
+                    <a asp-controller="Reserva"
+                       asp-action="Index"
+                       class="btn-book">
+
+                        RESERVE AGORA SUA MESA
+
+                    </a>
+
                 </div>
+
             </div>
+
         </section>
 
-        <section id="about" class="about section">
+        <!-- SOBRE -->
+        <section id="about"
+                 class="about section">
+
             <div class="container">
+
                 <div class="row gy-4">
-                    <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-                        <img src="~/Images/COZINHA.png" class="img-fluid mb-4" alt="Interior do restaurante">
+
+                    <div class="col-lg-7"
+                         data-aos="fade-up"
+                         data-aos-delay="100">
+
+                        <img src="~/Images/COZINHA.png"
+                             class="img-fluid mb-4"
+                             alt="Interior do restaurante">
+
                     </div>
-                    <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
+
+                    <div class="col-lg-5"
+                         data-aos="fade-up"
+                         data-aos-delay="250">
+
                         <div class="content ps-0 ps-lg-5">
+
+                            <h2>Sobre Nós</h2>
+
                             <p class="fst-italic">
-                                Na Dona Benedita, acreditamos que a comida une as pessoas. Nossa jornada começou com receitas de família passadas por gerações.
+
+                                Na Dona Benedita, acreditamos que a comida une as pessoas.
+
                             </p>
+
                             <ul>
-                                <li><i class="bi bi-check-circle-fill"></i> <span>Ingredientes frescos colhidos no dia.</span></li>
-                                <li><i class="bi bi-check-circle-fill"></i> <span>Ambiente acolhedor e familiar para seus amigos.</span></li>
-                                <li><i class="bi bi-check-circle-fill"></i> <span>Pratos feitos na hora com temperos naturais.</span></li>
+
+                                <li>
+                                    🔥 Ingredientes frescos
+                                </li>
+
+                                <li>
+                                    🍷 Ambiente acolhedor
+                                </li>
+
+                                <li>
+                                    🥩 Pratos preparados na hora
+                                </li>
+
                             </ul>
-                            <p>
-                                Trabalhamos duro para garantir que cada garfada seja uma lembrança afetiva. Do nosso fogão para a sua mesa, sempre com o carinho que você merece.
-                            </p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer-pro">
+
         <div class="footer-container">
+
             <div class="footer-col">
+
                 <p>
                     <strong>Localização:</strong><br>
+
                     Rua Barão de Capanema, 2900<br>
+
                     Jardins - São Paulo | SP
                 </p>
+
                 <p>
                     <strong>Reservas:</strong><br>
-                    21 2493-2021 | 21 2494-7418
+
+                    21 2493-2021
                 </p>
-                <p>
-                    <strong>E-mail:</strong><br>
-                    CasaBenedita@gmail.com.br
-                </p>
-                <div class="social">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-instagram"></i>
-                </div>
+
             </div>
+
             <div class="footer-col">
-                <h3>Como Chegar</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197502758151!2d-46.663189!3d-23.561349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzQwLjkiUyA0NsKwMzknNDcuNSJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="footer-col">
+
                 <h3>Funcionamento</h3>
+
                 <ul>
-                    <li><span>Segunda</span> 11:30h às 23:45h</li>
-                    <li><span>Terça</span> 11:30h às 23:45h</li>
-                    <li><span>Quarta</span> 11:30h às 23:45h</li>
-                    <li><span>Quinta</span> 11:30h às 23:45h</li>
-                    <li><span>Sexta</span> 11:30h às 23:45h</li>
-                    <li><span>Sábado</span> 11:30h às 01:00h</li>
-                    <li><span>Domingo</span> 11:30h às 23:45h</li>
+
+                    <li>
+                        Segunda à Sexta — 18h às 00h
+                    </li>
+
+                    <li>
+                        Sábado — 19h às 00h
+                    </li>
+
+                    <li>
+                        Domingo — 18h às 22h
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
+
     </footer>
 
-    <script src="../wwwroot/js/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../wwwroot/js/assets/vendor/aos/aos.js"></script>
-    <script src="../wwwroot/js/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../wwwroot/js/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../wwwroot/js/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../wwwroot/js/main.js"></script>
-
+    <!-- JS -->
     <script>
-        const btnMenu = document.getElementById("btnMenu");
-        const navMenu = document.getElementById("navmenu");
+
+        const btnMenu =
+            document.getElementById("btnMenu");
+
+        const navMenu =
+            document.getElementById("navmenu");
 
         btnMenu.addEventListener("click", () => {
+
             navMenu.classList.toggle("active");
+
         });
+
     </script>
 
 </body>
+
 </html>

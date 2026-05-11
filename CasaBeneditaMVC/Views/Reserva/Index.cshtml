@@ -2,31 +2,39 @@
     ViewData["Title"] = "Reserva";
 }
 
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Reserva - Casa Benedita</title>
 
+
+
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
-
+    <script src="~/js/reserva.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
+
+
 <body>
+
+
 
     <div class="container">
         <div class="card">
 
-            <img class="logo2" src="~/Images/logo.png" />
-            <header>
 
-             
- 
+
+            <header>
                 <h1>CASA BENEDITA</h1>
                 <p class="subtitle">Faça sua reserva!</p>
             </header>
+
+
 
             @if (TempData["Erro"] != null)
             {
@@ -35,6 +43,8 @@
                 </div>
             }
 
+
+
             @if (TempData["Sucesso"] != null)
             {
                 <div style="color:green; text-align:center; margin-bottom:10px;">
@@ -42,22 +52,28 @@
                 </div>
             }
 
-            <form asp-action="Criar" method="post">
+
+
+            <form asp-action="Criar" method="post" id="formReserva">
+
+
 
                 <!-- DATA -->
                 <div class="form-group">
                     <label>Qual dia?</label>
                     <input type="date"
-                           name="DataReserva"
-                           class="custom-select"
-                           min="@DateTime.Now.ToString("yyyy-MM-dd")"
-                           required>
+                                                     name="DataReserva"
+                                                     class="custom-select"
+                                                     id="campoData"
+                                                     min="@DateTime.Now.ToString("yyyy-MM-dd")">
                 </div>
+
+
 
                 <!-- HORÁRIO -->
                 <div class="form-group">
                     <label>Qual horário?</label>
-                    <select name="HorarioReserva" class="custom-select" required>
+                    <select name="HorarioReserva" class="custom-select" id="campoHorario">
                         <option value="">Selecione...</option>
                         <option value="18:00">18:00</option>
                         <option value="19:00">19:00</option>
@@ -67,101 +83,142 @@
                     </select>
                 </div>
 
+
+
                 <!-- NOME -->
                 <div class="form-group">
                     <label>Nome</label>
                     <input type="text"
-                           name="NomeCliente"
-                           class="custom-select"
-                           placeholder="Digite seu nome"
-                           required>
+                                                     name="NomeCliente"
+                                                     class="custom-select"
+                                                     placeholder="Digite seu nome"
+                                                     id="campoNome">
                 </div>
+
+
 
                 <!-- EMAIL -->
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email"
-                           name="EmailCliente"
-                           class="custom-select"
-                           placeholder="Digite seu email"
-                           required>
+                                                     name="EmailCliente"
+                                                     class="custom-select"
+                                                     placeholder="Digite seu email"
+                                                     id="campoEmail">
                 </div>
+
+
 
                 <!-- TELEFONE -->
                 <div class="form-group">
                     <label>Telefone</label>
                     <input type="text"
-                           name="TelefoneCliente"
-                           class="custom-select"
-                           placeholder="Digite seu telefone"
-                           required>
+                                                     name="TelefoneCliente"
+                                                     class="custom-select"
+                                                     placeholder="Digite seu telefone"
+                                                     id="campoTelefone">
                 </div>
+
+
 
                 <!-- BOTÃO -->
                 <footer>
-                    <button type="submit" class="btn-continue active">
+                    <button type="button" class="btn-continue active" onclick="confirmarReserva()">
                         Confirmar Reserva
                     </button>
                 </footer>
+
+
 
             </form>
         </div>
     </div>
 
+
+
 </body>
 
+
+
 <style>
-    body {
-        background: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        body {
+                background: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+
     }
 
-    .container {
-        max-width: 400px;
-        width: 100%;
+
+
+        .container {
+                max-width: 400px;
+                width: 100%;
+
     }
 
-    .card {
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
+
+
+        .card {
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+
     }
 
-    h1 {
-        text-align: center;
+
+
+        h1 {
+                text-align: center;
+
     }
 
-    .subtitle {
-        color: #c5a059;
-        text-align: center;
-        margin-bottom: 20px;
+
+
+        .subtitle {
+                color: #c5a059;
+                text-align: center;
+                margin-bottom: 20px;
+
     }
 
-    .form-group {
-        margin-bottom: 15px;
+
+
+        .form-group {
+                margin-bottom: 15px;
+
     }
 
-    .custom-select {
-        width: 100%;
-        padding: 10px;
+
+
+        .custom-select {
+                width: 100%;
+                padding: 10px;
+
     }
 
-    footer {
-        margin-top: 20px;
+
+
+        footer {
+                margin-top: 20px;
+
     }
 
-    .btn-continue {
-        background: #c5a059;
-        color: white;
-        border: none;
-        padding: 12px;
-        width: 100%;
-        border-radius: 20px;
-        font-weight: bold;
+
+
+        .btn-continue {
+                background: #c5a059;
+                color: white;
+                border: none;
+                padding: 12px;
+                width: 100%;
+                border-radius: 20px;
+                font-weight: bold;
+
     }
 </style>
+
+
 
 </html>
