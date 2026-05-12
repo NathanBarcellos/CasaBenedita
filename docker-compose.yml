@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  # O serviço que o VS criou (Sua App)
+  casabeneditamvc:
+    image: ${DOCKER_REGISTRY-}casabeneditamvc
+    build:
+      context: .
+      dockerfile: CasaBeneditaMVC/Dockerfile
+    ports:
+      - "80:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # A Connection String apontando para o serviço de baixo (db-sql)
+      - ConnectionStrings__DefaultConnection=Server=db-sql;Database=CasaBeneditaDB;User Id=sa;Password=C@s@B3nedita;TrustServerCertificate=True
+    depends_on:
+      - db-sql
+
+  # O serviço do Banco de Dados que vamos adicionar
+  db-sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=SuaSenhaForte123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:
